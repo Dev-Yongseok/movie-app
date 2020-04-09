@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react'
+
+import axios from 'axios';
+
 import {API_URL, API_KEY, IMAGE_BASE_URL} from '../../Config'
 import MainImage from "../LandingPage/Sections/MainImage";
-import MovieInfo from "../MovieDetail/Sections/MovieInfo";
-import axios from 'axios';
 import GridCards from '../commons/GridCards';
-import {Row} from 'antd';
+
+import MovieInfo from "./Sections/MovieInfo";
+import Favorite from "./Sections/Favorite";
+
+import {Row, Button} from 'antd';
 
 
 function MovieDetail(props) {
@@ -59,6 +64,14 @@ function MovieDetail(props) {
 
             {/* Body */}
             <div style={{ width : '85%', margin : '1rem auto '}}>
+                {/* Favorite Button */}
+                
+                <Favorite
+                    movieInfo = {Movie} 
+                    movieId = {movieId}
+                    userFrom = {localStorage.getItem('userId')}
+                />
+
                 {/* Movie Info */}
                 <MovieInfo 
                     movie = {Movie}
@@ -67,7 +80,7 @@ function MovieDetail(props) {
                 <br />
                 {/* Actor Grid */}
                 <div style={{ display : 'flex', justifyContent : 'center', margin : '2rem'}}>
-                    <button onClick={toggleActorView}> Toggle Actor View </button>
+                    <Button onClick={toggleActorView}> Toggle Actor View </Button>
                 </div>
 
                 {ActorToggle && 
