@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { FaCode } from "react-icons/fa";
 import { API_URL , API_KEY, IMAGE_BASE_URL} from "../../Config";
-import MainImage from "./Sections/MainImage";
+import MainImage from "../LandingPage/Sections/MainImage";
 import axios from 'axios';
 import GridCards from '../commons/GridCards';
 import {Row} from 'antd';
@@ -53,7 +53,7 @@ function LandingPage() {
                 />
             }
             <div style={{width:'85%' , margin : '1rem auto'}}>
-                <h2>최근 개봉 영화</h2>
+                <h2>Movies by latest (popular)</h2>
                 <hr />
                 {/* Movie Grid Cards*/}
 
@@ -62,6 +62,7 @@ function LandingPage() {
                     {Movies && Movies.map((movie, index) =>(
                         <React.Fragment key={index}>
                             <GridCards 
+                                landingPage
                                 image={movie.poster_path ?
                                     `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                                 movieId={movie.id}
