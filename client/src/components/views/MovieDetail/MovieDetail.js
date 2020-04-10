@@ -68,7 +68,7 @@ function MovieDetail(props) {
                 
                 <Favorite
                     movieInfo = {Movie} 
-                    movieId = {movieId}
+                    movieId = {movieId}      
                     userFrom = {localStorage.getItem('userId')}
                 />
 
